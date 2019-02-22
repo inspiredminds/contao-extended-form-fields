@@ -41,7 +41,7 @@ class FormHookListener
             $buffer, 1
         );
 
-        if ('' !== $widget->erroMsg && $widget->hasErrors()) {
+        if ($widget->errorMsg && $widget->hasErrors()) {
             foreach ($widget->getErrors() as $error) {
                 $buffer = str_replace($error, $widget->errorMsg, $buffer);
             }

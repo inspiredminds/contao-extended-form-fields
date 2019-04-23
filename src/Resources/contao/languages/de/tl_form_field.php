@@ -13,3 +13,4 @@ declare(strict_types=1);
 $GLOBALS['TL_LANG']['tl_form_field']['minOptions'] = ['Minimale Anzahl', 'Die minimale Anzahl an Optionen, die ausgewählt werden müssen.'];
 $GLOBALS['TL_LANG']['tl_form_field']['maxOptions'] = ['Maximale Anzahl', 'Die maximale Anzahl an Optionen, die ausgewählt werden können.'];
 $GLOBALS['TL_LANG']['tl_form_field']['errorMsg'] = ['Eigene Fehlermeldung', 'Diese Fehlermeldung wird bei einer ungültigen Eingabe angezeigt.'];
+$GLOBALS['TL_LANG']['tl_form_field']['addCustomOption'] = ['Eigene Angabe erlauben', 'Fügt ein Textfeld hinzu, womit der Benutzer einen eigenen Wert eingeben kann.'];

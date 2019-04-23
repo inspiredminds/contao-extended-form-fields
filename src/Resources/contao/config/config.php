@@ -10,5 +10,13 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
+/*
+ * Hooks
+ */
 $GLOBALS['TL_HOOKS']['validateFormField'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'onValidateFormField'];
 $GLOBALS['TL_HOOKS']['parseWidget'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'onParseWidget'];
+
+/*
+ * Form fields
+ */
+$GLOBALS['TL_FFL']['radio'] = \InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormRadioButton::class;

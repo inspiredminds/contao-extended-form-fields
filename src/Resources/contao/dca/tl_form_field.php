@@ -34,11 +34,24 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['errorMsg'] = [
     'sql' => "varchar(255) NOT NULL default ''",
 ];
 
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['addCustomOption'],
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w50'],
+    'sql' => "char(1) NOT NULL default ''",
+];
+
 \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addField('minOptions', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->addField('maxOptions', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('checkbox', 'tl_form_field')
     ->applyToSubPalette('multiple', 'tl_form_field')
+;
+
+\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+    ->addField('addCustomOption', 'options_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('radio', 'tl_form_field')
 ;
 
 foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $type => &$palette) {

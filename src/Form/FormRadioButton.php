@@ -32,8 +32,7 @@ class FormRadioButton extends \Contao\FormRadioButton
 
             if (!empty($customValue)) {
                 $this->varValue = $customValue;
-            }
-            else {
+            } else {
                 $this->addError($GLOBALS['TL_LANG']['ERR']['invalid']);
             }
         }
@@ -71,11 +70,13 @@ class FormRadioButton extends \Contao\FormRadioButton
         return $options;
     }
 
-    protected function getCustomRadioValue() {
+    protected function getCustomRadioValue()
+    {
         return 'custom'.$this->id;
     }
 
-    protected function getCustomTextName() {
+    protected function getCustomTextName()
+    {
         return $this->strName.'_custom'.$this->id;
     }
 }

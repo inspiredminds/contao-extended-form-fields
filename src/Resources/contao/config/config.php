@@ -13,7 +13,8 @@ declare(strict_types=1);
 /*
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['validateFormField'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'onValidateFormField'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'validateMinMaxOptions'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'validateBlacklistedWords'];
 $GLOBALS['TL_HOOKS']['parseWidget'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'onParseWidget'];
 
 /*

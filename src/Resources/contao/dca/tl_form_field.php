@@ -42,6 +42,14 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
     'sql' => "char(1) NOT NULL default ''",
 ];
 
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['blacklistedWords'],
+    'exclude' => true,
+    'inputType' => 'listWizard',
+    'eval' => ['tl_class' => 'w50 clr'],
+    'sql' => 'blob NULL',
+];
+
 \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addField('minOptions', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->addField('maxOptions', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
@@ -52,6 +60,12 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
 \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addField('addCustomOption', 'options_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('radio', 'tl_form_field')
+;
+
+\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+    ->addField('blacklistedWords', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('text', 'tl_form_field')
+    ->applyToPalette('textarea', 'tl_form_field')
 ;
 
 foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $type => &$palette) {

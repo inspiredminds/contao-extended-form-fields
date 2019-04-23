@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener;
 
 use Contao\Form;
+use Contao\StringUtil;
 use Contao\Widget;
 
 class FormHookListener
@@ -50,7 +51,7 @@ class FormHookListener
         return $buffer;
     }
 
-    public function onValidateFormField(Widget $widget, string $formId, array $formData, Form $form): Widget
+    public function validateMinMaxOptions(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
         if (!\in_array($widget->type, ['checkbox', 'select'], true)) {
             return $widget;
@@ -70,6 +71,21 @@ class FormHookListener
 
         if ($widget->maxOptions > 0 && \count($widget->value) > $widget->maxOptions) {
             $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldMaxOptions'], $widget->maxOptions));
+        }
+
+        return $widget;
+    }
+
+    public function validateBlacklistedWords(Widget $widget, string $formId, array $formData, Form $form): Widget
+    {
+        if (!empty($widget->blacklistedWords)) {
+            $blacklist = StringUtil::deserialize($widget->blacklistedWords, true);
+
+            foreach ($blacklist as $word) {
+                if (false !== stripos($widget->value, $word)) {
+                    $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldBlacklistedWords'], $word));
+                }
+            }
         }
 
         return $widget;

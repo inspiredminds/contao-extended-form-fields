@@ -12,3 +12,4 @@ declare(strict_types=1);
 
 $GLOBALS['TL_LANG']['ERR']['formFieldMinOptions'] = 'Es müssen mindestens %s Optionen ausgewählt werden.';
 $GLOBALS['TL_LANG']['ERR']['formFieldMaxOptions'] = 'Es können maximal %s Optionen ausgewählt werden.';
+$GLOBALS['TL_LANG']['ERR']['formFieldBlacklistedWords'] = 'Das Wort "%s" is nicht erlaubt.';

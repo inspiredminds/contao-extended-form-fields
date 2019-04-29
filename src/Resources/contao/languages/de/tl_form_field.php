@@ -15,3 +15,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['maxOptions'] = ['Maximale Anzahl', 'Die ma
 $GLOBALS['TL_LANG']['tl_form_field']['errorMsg'] = ['Eigene Fehlermeldung', 'Diese Fehlermeldung wird bei einer ungültigen Eingabe angezeigt.'];
 $GLOBALS['TL_LANG']['tl_form_field']['addCustomOption'] = ['Eigene Angabe erlauben', 'Fügt ein Textfeld hinzu, womit der Benutzer einen eigenen Wert eingeben kann.'];
 $GLOBALS['TL_LANG']['tl_form_field']['blacklistedWords'] = ['Nicht erlaubte Wörter', 'Diese Wörter verursachen einen Fehler bei der Validierung.'];
+$GLOBALS['TL_LANG']['tl_form_field']['step'] = ['Schrittgröße', 'Schrittgröße des Range-Slider.'];

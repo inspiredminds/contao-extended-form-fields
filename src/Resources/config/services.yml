@@ -1,4 +1,4 @@
 services:
-  inspiredminds.contaocheckboxselectfield.listener.formhook:
-    class: InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener
+  _defaults:
     public: true
+  InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener: ~

@@ -13,11 +13,12 @@ declare(strict_types=1);
 /*
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['validateFormField'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'validateMinMaxOptions'];
-$GLOBALS['TL_HOOKS']['validateFormField'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'validateBlacklistedWords'];
-$GLOBALS['TL_HOOKS']['parseWidget'][] = ['inspiredminds.contaocheckboxselectfield.listener.formhook', 'onParseWidget'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'validateMinMaxOptions'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'validateBlacklistedWords'];
+$GLOBALS['TL_HOOKS']['parseWidget'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'onParseWidget'];
 
 /*
  * Form fields
  */
 $GLOBALS['TL_FFL']['radio'] = \InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormRadioButton::class;
+$GLOBALS['TL_FFL']['range'] = \InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormRange::class;

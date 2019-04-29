@@ -15,3 +15,5 @@ $GLOBALS['TL_LANG']['ERR']['formFieldMaxOptions'] = 'Es können maximal %s Optio
 $GLOBALS['TL_LANG']['ERR']['formFieldBlacklistedWords'] = 'Das Wort "%s" is nicht erlaubt.';
 
 $GLOBALS['TL_LANG']['MSC']['formFieldCustomLabel'] = 'Eigener Wert';
+
+$GLOBALS['TL_LANG']['FFL']['range'] = ['Range', 'Range-Slider Eingabefeld.'];

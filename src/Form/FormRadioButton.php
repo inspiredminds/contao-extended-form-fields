@@ -61,7 +61,7 @@ class FormRadioButton extends \Contao\FormRadioButton
         foreach ($options as &$option) {
             if ($option['value'] === $this->getCustomRadioValue()) {
                 $option['type'] = 'custom';
-                $option['checked'] = $this->isValidOption($this->varValue) ? '' : ' checked';
+                $option['checked'] = $this->isValidOption($this->varValue) || !$this->varValue ? '' : ' checked';
                 $option['custom_name'] = $this->getCustomTextName();
                 $option['custom_value'] = $this->isValidOption($this->varValue) ? '' : $this->varValue;
             }

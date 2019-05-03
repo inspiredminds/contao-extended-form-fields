@@ -59,9 +59,11 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['step'] = [
     'sql' => "int(10) unsigned NOT NULL default '0'",
 ];
 
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = str_replace([',rgxp', ',placeholder'], '', $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range']);
+
 \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->removeField('rgxp')
-    ->removeField('placeholder')
+    //->removeField('rgxp')
+    //->removeField('placeholder')
     ->addField('step', 'maxlength')
     ->applyToPalette('range', 'tl_form_field')
 ;

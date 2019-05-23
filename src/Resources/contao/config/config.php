@@ -15,6 +15,7 @@ declare(strict_types=1);
  */
 $GLOBALS['TL_HOOKS']['validateFormField'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'validateMinMaxOptions'];
 $GLOBALS['TL_HOOKS']['validateFormField'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'validateBlacklistedWords'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'validateWhitelistedValues'];
 $GLOBALS['TL_HOOKS']['parseWidget'][] = [\InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener::class, 'onParseWidget'];
 
 /*

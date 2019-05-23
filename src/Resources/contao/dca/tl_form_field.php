@@ -83,6 +83,20 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
     ->applyToPalette('textarea', 'tl_form_field')
 ;
 
+// Add white listed values
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['whitelistedValues'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['whitelistedValues'],
+    'exclude' => true,
+    'inputType' => 'listWizard',
+    'eval' => ['tl_class' => 'w50 clr'],
+    'sql' => 'blob NULL',
+];
+
+\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+    ->addField('whitelistedValues', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('text', 'tl_form_field')
+;
+
 // Add custom errorMsg
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['errorMsg'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_form_field']['errorMsg'],

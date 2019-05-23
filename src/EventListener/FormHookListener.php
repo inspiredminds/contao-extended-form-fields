@@ -79,13 +79,30 @@ class FormHookListener
     public function validateBlacklistedWords(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
         if (!empty($widget->blacklistedWords)) {
-            $blacklist = StringUtil::deserialize($widget->blacklistedWords, true);
+            $blacklist = array_filter(StringUtil::deserialize($widget->blacklistedWords, true));
 
             foreach ($blacklist as $word) {
                 if (false !== stripos($widget->value, $word)) {
                     $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldBlacklistedWords'], $word));
                 }
             }
+        }
+
+        return $widget;
+    }
+
+    public function validateWhitelistedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
+    {
+        if (!empty($widget->whitelistedValues)) {
+            $whitelist = array_filter(StringUtil::deserialize($widget->whitelistedValues, true));
+
+            foreach ($whitelist as $value) {
+                if ((string) $widget->value === (string) $value) {
+                    return $widget;
+                }
+            }
+
+            $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldWhitelistedValues']);
         }
 
         return $widget;

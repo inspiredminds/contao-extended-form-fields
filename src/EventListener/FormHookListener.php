@@ -96,13 +96,15 @@ class FormHookListener
         if (!empty($widget->whitelistedValues)) {
             $whitelist = array_filter(StringUtil::deserialize($widget->whitelistedValues, true));
 
-            foreach ($whitelist as $value) {
-                if ((string) $widget->value === (string) $value) {
-                    return $widget;
+            if (!empty($whitelist)) {
+                foreach ($whitelist as $value) {
+                    if ((string) $widget->value === (string) $value) {
+                        return $widget;
+                    }
                 }
-            }
 
-            $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldWhitelistedValues']);
+                $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldWhitelistedValues']);
+            }
         }
 
         return $widget;

@@ -1,4 +1,3 @@
-[![](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/inspiredminds/contao-extended-form-fields)
 [![](https://img.shields.io/packagist/v/inspiredminds/contao-extended-form-fields.svg)](https://packagist.org/packages/inspiredminds/contao-extended-form-fields)
 [![](https://img.shields.io/packagist/dt/inspiredminds/contao-extended-form-fields.svg)](https://packagist.org/packages/inspiredminds/contao-extended-form-fields)
 

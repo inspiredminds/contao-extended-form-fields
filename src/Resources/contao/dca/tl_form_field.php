@@ -49,24 +49,26 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
 ;
 
 // Add range field
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = $GLOBALS['TL_DCA']['tl_form_field']['palettes']['text'];
+if (!isset($GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'])) {
+    $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = $GLOBALS['TL_DCA']['tl_form_field']['palettes']['text'];
 
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['step'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['step'],
-    'exclude' => true,
-    'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'tl_class' => 'w50'],
-    'sql' => ['type' => 'float', 'scale' => 2, 'notnull' => false]
-];
+    $GLOBALS['TL_DCA']['tl_form_field']['fields']['step'] = [
+        'label' => &$GLOBALS['TL_LANG']['tl_form_field']['step'],
+        'exclude' => true,
+        'inputType' => 'text',
+        'eval' => ['rgxp' => 'digit', 'tl_class' => 'w50'],
+        'sql' => ['type' => 'float', 'scale' => 2, 'notnull' => false]
+    ];
 
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = str_replace([',rgxp', ',placeholder'], '', $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range']);
+    $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = str_replace([',rgxp', ',placeholder'], '', $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range']);
 
-\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    //->removeField('rgxp')
-    //->removeField('placeholder')
-    ->addField('step', 'maxlength')
-    ->applyToPalette('range', 'tl_form_field')
-;
+    \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+        //->removeField('rgxp')
+        //->removeField('placeholder')
+        ->addField('step', 'maxlength')
+        ->applyToPalette('range', 'tl_form_field')
+    ;
+}
 
 // Add black listed words
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [

@@ -55,8 +55,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['step'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_form_field']['step'],
     'exclude' => true,
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'natural', 'tl_class' => 'w50'],
-    'sql' => "int(10) unsigned NOT NULL default '0'",
+    'eval' => ['rgxp' => 'digit', 'tl_class' => 'w50'],
+    'sql' => ['type' => 'float', 'scale' => 2, 'notnull' => false]
 ];
 
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = str_replace([',rgxp', ',placeholder'], '', $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range']);

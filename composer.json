@@ -4,6 +4,7 @@
     "keywords": ["contao", "form", "field", "checkbox", "select", "extended"],
     "type": "contao-bundle",
     "license": "LGPL-3.0-or-later",
+    "homepage": "https://github.com/inspiredminds/contao-extended-form-fields",
     "authors": [
         {
             "name": "Fritz Michael Gschwantner",

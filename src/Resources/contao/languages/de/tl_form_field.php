@@ -16,4 +16,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['errorMsg'] = ['Eigene Fehlermeldung', 'Die
 $GLOBALS['TL_LANG']['tl_form_field']['addCustomOption'] = ['Eigene Angabe erlauben', 'Fügt ein Textfeld hinzu, womit der Benutzer einen eigenen Wert eingeben kann.'];
 $GLOBALS['TL_LANG']['tl_form_field']['blacklistedWords'] = ['Nicht erlaubte Wörter', 'Diese Wörter verursachen einen Fehler bei der Validierung.'];
 $GLOBALS['TL_LANG']['tl_form_field']['whitelistedValues'] = ['Erlaubte Werte', 'Nur diese Wörter bzw. Werte werden erlaubt.'];
-$GLOBALS['TL_LANG']['tl_form_field']['step'] = ['Schrittgröße', 'Schrittgröße des Range-Slider.'];
+$GLOBALS['TL_LANG']['tl_form_field']['httpurl'] = ['Absolute URL', 'Überprüft ob die eingegebene URL eine absolute URL ist.'];

@@ -11,4 +11,4 @@ Contao 4 extension to extend form fields with more options.
 * Adds the ability to provide a custom input field in the front end for radio button form fields.
 * Allows you to define blacklisted words for text and textarea fields.
 * Allows you to define a whitelist for text fields.
-* Adds a range form field (not necessary for Contao 4.9+).
+* A `httpurl` `rgxp` option (see [this PR](https://github.com/contao/contao/pull/2297)).

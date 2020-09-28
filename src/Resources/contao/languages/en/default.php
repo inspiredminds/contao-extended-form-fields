@@ -10,11 +10,15 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
+use InspiredMinds\ContaoExtendedFormFieldsBundle\ContaoExtendedFormFieldsBundle;
+
 $GLOBALS['TL_LANG']['ERR']['formFieldMinOptions'] = 'You have to select at least %s options.';
 $GLOBALS['TL_LANG']['ERR']['formFieldMaxOptions'] = 'You can only select a maximum of %s options.';
 $GLOBALS['TL_LANG']['ERR']['formFieldBlacklistedWords'] = 'The word "%s" is not allowed.';
 $GLOBALS['TL_LANG']['ERR']['formFieldWhitelistedValues'] = 'Invalid input.';
 
-$GLOBALS['TL_LANG']['MSC']['formFieldCustomLabel'] = 'Custom value';
+if (ContaoExtendedFormFieldsBundle::canIntegrateHttpUrlRgxp()) {
+    $GLOBALS['TL_LANG']['ERR']['invalidHttpUrl'] = 'Please enter a valid URL starting with either http:// or https://!';
+}
 
-$GLOBALS['TL_LANG']['FFL']['range'] = ['Range', 'Range slider input field.'];
+$GLOBALS['TL_LANG']['MSC']['formFieldCustomLabel'] = 'Custom value';

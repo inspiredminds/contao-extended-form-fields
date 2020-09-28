@@ -10,6 +10,10 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
+use InspiredMinds\ContaoExtendedFormFieldsBundle\ContaoExtendedFormFieldsBundle;
+use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\HttpUrlListener;
+
 // Add minOptions and maxOptions for checkbox fields
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['minOptions'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_form_field']['minOptions'],
@@ -27,9 +31,9 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['maxOptions'] = [
     'sql' => "int(10) NOT NULL DEFAULT '0'",
 ];
 
-\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addField('minOptions', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
-    ->addField('maxOptions', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+PaletteManipulator::create()
+    ->addField('minOptions', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
+    ->addField('maxOptions', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('checkbox', 'tl_form_field')
     ->applyToSubPalette('multiple', 'tl_form_field')
 ;
@@ -43,32 +47,10 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
     'sql' => "char(1) NOT NULL default ''",
 ];
 
-\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addField('addCustomOption', 'options_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+PaletteManipulator::create()
+    ->addField('addCustomOption', 'options_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('radio', 'tl_form_field')
 ;
-
-// Add range field
-if (!isset($GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'])) {
-    $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = $GLOBALS['TL_DCA']['tl_form_field']['palettes']['text'];
-
-    $GLOBALS['TL_DCA']['tl_form_field']['fields']['step'] = [
-        'label' => &$GLOBALS['TL_LANG']['tl_form_field']['step'],
-        'exclude' => true,
-        'inputType' => 'text',
-        'eval' => ['rgxp' => 'digit', 'tl_class' => 'w50'],
-        'sql' => ['type' => 'float', 'scale' => 2, 'notnull' => false]
-    ];
-
-    $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range'] = str_replace([',rgxp', ',placeholder'], '', $GLOBALS['TL_DCA']['tl_form_field']['palettes']['range']);
-
-    \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-        //->removeField('rgxp')
-        //->removeField('placeholder')
-        ->addField('step', 'maxlength')
-        ->applyToPalette('range', 'tl_form_field')
-    ;
-}
 
 // Add black listed words
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
@@ -79,8 +61,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
     'sql' => 'blob NULL',
 ];
 
-\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addField('blacklistedWords', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+PaletteManipulator::create()
+    ->addField('blacklistedWords', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
     ->applyToPalette('textarea', 'tl_form_field')
 ;
@@ -94,8 +76,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['whitelistedValues'] = [
     'sql' => 'blob NULL',
 ];
 
-\Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addField('whitelistedValues', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+PaletteManipulator::create()
+    ->addField('whitelistedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
 ;
 
@@ -109,10 +91,15 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['errorMsg'] = [
 ];
 
 foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $type => &$palette) {
-    if ('__selector__' !== $type && 'default' !== $type) {
-        \Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-            ->addField('errorMsg', 'fconfig_legend', \Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    if ('__selector__' !== $type && 'default' !== $type && \is_string($palette)) {
+        PaletteManipulator::create()
+            ->addField('errorMsg', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
             ->applyToPalette($type, 'tl_form_field')
         ;
     }
+}
+
+// Add httpurl rgxp
+if (ContaoExtendedFormFieldsBundle::canIntegrateHttpUrlRgxp()) {
+    $GLOBALS['TL_DCA']['tl_form_field']['fields']['rgxp']['options'][] = HttpUrlListener::RGXP_NAME;
 }

@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['errorMsg'] = [
 ];
 
 foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $type => &$palette) {
-    if ('__selector__' !== $type && 'default' !== $type && \is_string($palette)) {
+    if ('__selector__' !== $type && 'default' !== $type && \is_string($palette) && false !== strpos($palette, 'mandatory')) {
         PaletteManipulator::create()
             ->addField('errorMsg', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
             ->applyToPalette($type, 'tl_form_field')

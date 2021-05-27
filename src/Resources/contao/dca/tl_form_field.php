@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
+use Contao\Controller;
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\ContaoExtendedFormFieldsBundle;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\HttpUrlListener;
@@ -90,16 +91,14 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['errorMsg'] = [
     'sql' => "varchar(255) NOT NULL default ''",
 ];
 
-foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $type => &$palette) {
-    if ('__selector__' !== $type && 'default' !== $type && \is_string($palette) && false !== strpos($palette, 'mandatory')) {
-        PaletteManipulator::create()
-            ->addField('errorMsg', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
-            ->applyToPalette($type, 'tl_form_field')
-        ;
-    }
-}
-
 // Add httpurl rgxp
 if (ContaoExtendedFormFieldsBundle::canIntegrateHttpUrlRgxp()) {
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['rgxp']['options'][] = HttpUrlListener::RGXP_NAME;
 }
+
+// Protected
+Controller::loadDataContainer('tl_content');
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['protected'] = $GLOBALS['TL_DCA']['tl_content']['fields']['protected'];
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['groups'] = $GLOBALS['TL_DCA']['tl_content']['fields']['groups'];
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['__selector__'][] = 'protected';
+$GLOBALS['TL_DCA']['tl_form_field']['subpalettes']['protected'] = 'groups';

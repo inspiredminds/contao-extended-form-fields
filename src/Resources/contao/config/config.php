@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 
 use InspiredMinds\ContaoExtendedFormFieldsBundle\ContaoExtendedFormFieldsBundle;
+use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormFieldVisibilityListener;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\HttpUrlListener;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormRadioButton;
@@ -31,3 +32,8 @@ if (ContaoExtendedFormFieldsBundle::canIntegrateHttpUrlRgxp()) {
  * Form fields
  */
 $GLOBALS['TL_FFL']['radio'] = FormRadioButton::class;
+
+/*
+ * Isotope Hooks
+ */
+$GLOBALS['ISO_HOOKS']['orderConditions'][] = [FormFieldVisibilityListener::class, 'onOrderConditions'];

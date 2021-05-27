@@ -12,3 +12,4 @@ Contao 4 extension to extend form fields with more options.
 * Allows you to define disallowed words for text and textarea fields.
 * Allows you to define allowed words for text fields.
 * A `httpurl` `rgxp` option (see [this PR](https://github.com/contao/contao/pull/2297)).
+* Allows you to show certain form fields only to specific member groups.

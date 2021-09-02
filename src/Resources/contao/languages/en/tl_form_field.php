@@ -22,3 +22,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['blacklistedWords'] = ['Blacklisted words',
 $GLOBALS['TL_LANG']['tl_form_field']['whitelistedValues'] = ['Whitelisted values', 'Only these words or values will be allowed.'];
 $GLOBALS['TL_LANG']['tl_form_field']['httpurl'] = ['Absolute URL', 'Checks whether the input is a valid absolute URL.'];
 $GLOBALS['TL_LANG']['tl_form_field']['protected_legend'] = &$GLOBALS['TL_LANG']['tl_content']['protected_legend'];
+$GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'] = ['Show character count', 'Shows a character counter via JavaScript.'];

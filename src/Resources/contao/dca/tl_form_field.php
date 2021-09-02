@@ -102,3 +102,17 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['protected'] = $GLOBALS['TL_DCA'][
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['groups'] = $GLOBALS['TL_DCA']['tl_content']['fields']['groups'];
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['__selector__'][] = 'protected';
 $GLOBALS['TL_DCA']['tl_form_field']['subpalettes']['protected'] = 'groups';
+
+// Add message countdown
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['showCharacterCount'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'],
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w50'],
+    'sql' => "char(1) NOT NULL default ''",
+];
+
+PaletteManipulator::create()
+    ->addField('showCharacterCount', 'expert_legend', PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('textarea', 'tl_form_field')
+;

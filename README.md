@@ -14,4 +14,4 @@ Contao 4 extension to extend form fields with more options.
 * A `httpurl` `rgxp` option (see [this PR](https://github.com/contao/contao/pull/2297)).
 * Allows you to show certain form fields only to specific member groups.
 * Allows you to show a character count for textareas in the front end.
-* Allows you to load a default value from a GET parameter.
+* Allows you to load a default value from a query parameter of the request.

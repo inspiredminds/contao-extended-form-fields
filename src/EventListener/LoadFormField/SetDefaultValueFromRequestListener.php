@@ -52,7 +52,7 @@ class SetDefaultValueFromRequestListener
             return $widget;
         }
 
-        $widget->value = StringUtil::specialcharsAttribute($request->query->get($widget->name), true, true);
+        $widget->value = StringUtil::specialcharsAttribute($value, true, true);
 
         return $widget;
     }

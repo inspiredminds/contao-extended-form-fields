@@ -46,6 +46,12 @@ class SetDefaultValueFromRequestListener
             return $widget;
         }
 
+        $value = $request->query->get($widget->name);
+
+        if (!\is_string($value)) {
+            return $widget;
+        }
+
         $widget->value = StringUtil::specialcharsAttribute($request->query->get($widget->name), true, true);
 
         return $widget;

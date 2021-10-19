@@ -18,3 +18,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['blacklistedWords'] = ['Nicht erlaubte Wör
 $GLOBALS['TL_LANG']['tl_form_field']['whitelistedValues'] = ['Erlaubte Werte', 'Nur diese Wörter bzw. Werte werden erlaubt.'];
 $GLOBALS['TL_LANG']['tl_form_field']['httpurl'] = ['Absolute URL', 'Überprüft ob die eingegebene URL eine absolute URL ist.'];
 $GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'] = ['Zeichen-Anzahl zeigen', 'Zeigt die eingegebene Anzahl an Zeichen über JavaScript.'];
+$GLOBALS['TL_LANG']['tl_form_field']['defaultFromRequest'] = ['Standard-Wert aus Anfrage', 'Setzt den Standard-Wert dieses Feldes anhand eines GET Parameters des selben Namens.'];

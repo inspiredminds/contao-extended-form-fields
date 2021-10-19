@@ -17,7 +17,6 @@ use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\HttpUrlListener;
 
 // Add minOptions and maxOptions for checkbox fields
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['minOptions'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['minOptions'],
     'exclude' => true,
     'inputType' => 'text',
     'eval' => ['tl_class' => 'w50', 'rgxp' => 'natural'],
@@ -25,7 +24,6 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['minOptions'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['maxOptions'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['maxOptions'],
     'exclude' => true,
     'inputType' => 'text',
     'eval' => ['tl_class' => 'w50', 'rgxp' => 'natural'],
@@ -41,7 +39,6 @@ PaletteManipulator::create()
 
 // Add custom option for radio button field
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['addCustomOption'],
     'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => ['tl_class' => 'w50'],
@@ -55,7 +52,6 @@ PaletteManipulator::create()
 
 // Add black listed words
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['blacklistedWords'],
     'exclude' => true,
     'inputType' => 'listWizard',
     'eval' => ['tl_class' => 'w50 clr'],
@@ -70,7 +66,6 @@ PaletteManipulator::create()
 
 // Add white listed values
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['whitelistedValues'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['whitelistedValues'],
     'exclude' => true,
     'inputType' => 'listWizard',
     'eval' => ['tl_class' => 'w50 clr'],
@@ -84,7 +79,6 @@ PaletteManipulator::create()
 
 // Add custom errorMsg
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['errorMsg'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['errorMsg'],
     'exclude' => true,
     'inputType' => 'text',
     'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'clr w50'],
@@ -105,7 +99,6 @@ $GLOBALS['TL_DCA']['tl_form_field']['subpalettes']['protected'] = 'groups';
 
 // Add message countdown
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['showCharacterCount'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'],
     'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => ['tl_class' => 'w50'],
@@ -116,3 +109,11 @@ PaletteManipulator::create()
     ->addField('showCharacterCount', 'expert_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('textarea', 'tl_form_field')
 ;
+
+// Load default from request
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['defaultFromRequest'] = [
+    'inputType' => 'checkbox',
+    'exclude' => true,
+    'eval' => ['tl_class' => 'clr w50'],
+    'sql' => ['type' => 'boolean', 'default' => false],
+];

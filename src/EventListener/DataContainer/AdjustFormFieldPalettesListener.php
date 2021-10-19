@@ -44,6 +44,12 @@ class AdjustFormFieldPalettesListener
                 ->addField('protected', 'protected_legend', PaletteManipulator::POSITION_APPEND)
                 ->applyToPalette($type, $table)
             ;
+
+            // Load default from request
+            PaletteManipulator::create()
+                ->addField('defaultFromRequest', 'expert_legend', PaletteManipulator::POSITION_APPEND)
+                ->applyToPalette($type, $table)
+            ;
         }
     }
 }

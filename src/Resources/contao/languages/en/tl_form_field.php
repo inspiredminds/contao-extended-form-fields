@@ -23,4 +23,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['whitelistedValues'] = ['Whitelisted values
 $GLOBALS['TL_LANG']['tl_form_field']['httpurl'] = ['Absolute URL', 'Checks whether the input is a valid absolute URL.'];
 $GLOBALS['TL_LANG']['tl_form_field']['protected_legend'] = &$GLOBALS['TL_LANG']['tl_content']['protected_legend'];
 $GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'] = ['Show character count', 'Shows a character counter via JavaScript.'];
-$GLOBALS['TL_LANG']['tl_form_field']['defaultFromRequest'] = ['Load default from request', 'Sets the default value of this field according to a GET parameter of the same name.'];
+$GLOBALS['TL_LANG']['tl_form_field']['defaultFromRequest'] = ['Load default from request', 'Sets the default value of this field according to a query parameter of the same name.'];

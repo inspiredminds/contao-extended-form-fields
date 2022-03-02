@@ -76,14 +76,14 @@ class FormHookListener
         return $widget;
     }
 
-    public function validateBlacklistedWords(Widget $widget, string $formId, array $formData, Form $form): Widget
+    public function validateDisallowedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
-        if (!empty($widget->blacklistedWords)) {
-            $blacklist = array_filter(StringUtil::deserialize($widget->blacklistedWords, true));
+        if (!empty($widget->disallowedValues)) {
+            $disallowlist = array_filter(StringUtil::deserialize($widget->disallowedValues, true));
 
-            foreach ($blacklist as $word) {
+            foreach ($disallowlist as $word) {
                 if (false !== stripos($widget->value, $word)) {
-                    $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldBlacklistedWords'], $word));
+                    $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldDisallowedValues'], $word));
                 }
             }
         }
@@ -91,23 +91,23 @@ class FormHookListener
         return $widget;
     }
 
-    public function validateWhitelistedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
+    public function validateAllowedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
         if ('' === (string) $widget->value && !$widget->mandatory) {
             return $widget;
         }
 
-        if (!empty($widget->whitelistedValues)) {
-            $whitelist = array_filter(StringUtil::deserialize($widget->whitelistedValues, true));
+        if (!empty($widget->allowedValues)) {
+            $allowlist = array_filter(StringUtil::deserialize($widget->allowedValues, true));
 
-            if (!empty($whitelist)) {
-                foreach ($whitelist as $value) {
+            if (!empty($allowlist)) {
+                foreach ($allowlist as $value) {
                     if ((string) $widget->value === (string) $value) {
                         return $widget;
                     }
                 }
 
-                $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldWhitelistedValues']);
+                $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldAllowedValues']);
             }
         }
 

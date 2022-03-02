@@ -20,8 +20,8 @@ use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormRadioButton;
  * Hooks
  */
 $GLOBALS['TL_HOOKS']['validateFormField'][] = [FormHookListener::class, 'validateMinMaxOptions'];
-$GLOBALS['TL_HOOKS']['validateFormField'][] = [FormHookListener::class, 'validateBlacklistedWords'];
-$GLOBALS['TL_HOOKS']['validateFormField'][] = [FormHookListener::class, 'validateWhitelistedValues'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = [FormHookListener::class, 'validateDisallowedValues'];
+$GLOBALS['TL_HOOKS']['validateFormField'][] = [FormHookListener::class, 'validateAllowedValues'];
 $GLOBALS['TL_HOOKS']['parseWidget'][] = [FormHookListener::class, 'onParseWidget'];
 
 if (ContaoExtendedFormFieldsBundle::canIntegrateHttpUrlRgxp()) {

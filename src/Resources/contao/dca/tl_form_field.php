@@ -50,8 +50,8 @@ PaletteManipulator::create()
     ->applyToPalette('radio', 'tl_form_field')
 ;
 
-// Add black listed words
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
+// Add disallowed values
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['disallowedValues'] = [
     'exclude' => true,
     'inputType' => 'listWizard',
     'eval' => ['tl_class' => 'w50 clr'],
@@ -59,13 +59,13 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['blacklistedWords'] = [
 ];
 
 PaletteManipulator::create()
-    ->addField('blacklistedWords', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
+    ->addField('disallowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
     ->applyToPalette('textarea', 'tl_form_field')
 ;
 
-// Add white listed values
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['whitelistedValues'] = [
+// Add allowed values
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['allowedValues'] = [
     'exclude' => true,
     'inputType' => 'listWizard',
     'eval' => ['tl_class' => 'w50 clr'],
@@ -73,7 +73,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['whitelistedValues'] = [
 ];
 
 PaletteManipulator::create()
-    ->addField('whitelistedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
+    ->addField('allowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
 ;
 

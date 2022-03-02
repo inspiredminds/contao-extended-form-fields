@@ -30,7 +30,7 @@ class FormHookListener
             '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
             function ($matches) use ($data) {
                 $tag = $matches[1];
-                $attributes = $matches[2];
+                $attributes = $matches[2] ?? '';
 
                 // add the data attributes
                 foreach ($data as $key => $value) {
@@ -93,6 +93,10 @@ class FormHookListener
 
     public function validateWhitelistedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
+        if ('' === (string) $widget->value && !$widget->mandatory) {
+            return $widget;
+        }
+
         if (!empty($widget->whitelistedValues)) {
             $whitelist = array_filter(StringUtil::deserialize($widget->whitelistedValues, true));
 

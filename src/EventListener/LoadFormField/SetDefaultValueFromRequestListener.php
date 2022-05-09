@@ -14,7 +14,6 @@ namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\LoadFormFie
 
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\Form;
-use Contao\Input;
 use Contao\StringUtil;
 use Contao\Widget;
 use Symfony\Component\HttpFoundation\Request;

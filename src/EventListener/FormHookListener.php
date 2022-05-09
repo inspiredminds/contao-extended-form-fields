@@ -20,13 +20,13 @@ class FormHookListener
 {
     public function onParseWidget(string $buffer, Widget $widget): string
     {
-        $data = \array_filter([
+        $data = array_filter([
             'data-min-options' => $widget->minOptions,
             'data-max-options' => $widget->maxOptions,
         ], function ($v) { return $v > 0; });
 
         // parse the initial HTML tag
-        $buffer = \preg_replace_callback(
+        $buffer = preg_replace_callback(
             '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
             function ($matches) use ($data) {
                 $tag = $matches[1];

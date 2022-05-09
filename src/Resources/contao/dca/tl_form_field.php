@@ -37,7 +37,7 @@ PaletteManipulator::create()
     ->applyToSubPalette('multiple', 'tl_form_field')
 ;
 
-// Add custom option for radio button field
+// Add custom option for radio/checkbox button field
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
     'exclude' => true,
     'inputType' => 'checkbox',
@@ -48,6 +48,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['addCustomOption'] = [
 PaletteManipulator::create()
     ->addField('addCustomOption', 'options_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('radio', 'tl_form_field')
+    ->applyToPalette('checkbox', 'tl_form_field')
 ;
 
 // Add disallowed values

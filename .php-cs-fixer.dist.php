@@ -8,7 +8,7 @@ This file is part of the ContaoExtendedFormFields bundle.
 @license LGPL-3.0-or-later
 EOF;
 
-$finder = PhpCsFixer\Finder::create()
+$finder = (new PhpCsFixer\Finder())
     ->exclude('Resources/contao/templates')
     ->exclude('Fixtures')
     ->in([
@@ -33,9 +33,11 @@ return (new PhpCsFixer\Config())
         'escape_implicit_backslashes' => true,
         'fully_qualified_strict_types' => true,
         'general_phpdoc_annotation_remove' => [
-            'author',
-            'expectedException',
-            'expectedExceptionMessage',
+            'annotations' => [
+                'author',
+                'expectedException',
+                'expectedExceptionMessage',
+            ],
         ],
         'header_comment' => ['header' => $header],
         'heredoc_to_nowdoc' => true,

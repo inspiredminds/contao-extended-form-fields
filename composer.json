@@ -29,6 +29,9 @@
         "php": ">=7.1",
         "contao/core-bundle": "^4.9"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16 || ^3.0"
+    },
     "autoload": {
         "psr-4": {
             "InspiredMinds\\ContaoExtendedFormFieldsBundle\\": "src/"
@@ -36,5 +39,10 @@
     },
     "extra": {
         "contao-manager-plugin": "InspiredMinds\\ContaoExtendedFormFieldsBundle\\ContaoManagerPlugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true
+        }
     }
 }

@@ -2,7 +2,7 @@
 [![](https://img.shields.io/packagist/dt/inspiredminds/contao-extended-form-fields.svg)](https://packagist.org/packages/inspiredminds/contao-extended-form-fields)
 
 Contao Extended Form Fields
-=====================
+===========================
 
 Contao 4 extension to extend form fields with more options.
 
@@ -15,3 +15,4 @@ Contao 4 extension to extend form fields with more options.
 * Allows you to show certain form fields only to specific member groups.
 * Allows you to show a character count for textareas in the front end.
 * Allows you to load a default value from a query parameter of the request.
+* Automatically uses the native HTML5 `date` input type for `date` text fields.

@@ -27,7 +27,7 @@ class FormCheckBox extends \Contao\FormCheckBox
     {
         parent::validate();
 
-        if (\is_array($this->varValue) && $this->addCustomOption && $this->getCustomCheckboxValue() === reset($this->getPost($this->strName))) {
+        if (\is_array($this->varValue) && $this->addCustomOption && \in_array((string) $this->getCustomCheckboxValue(), $this->getPost($this->strName), true)) {
             $customValue = $this->getPost($this->getCustomTextName());
 
             if (!empty($customValue)) {

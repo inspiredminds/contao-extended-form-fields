@@ -37,7 +37,7 @@ class FormText extends \Contao\FormTextField
             $targetFormat = Date::getNumericDateFormat();
 
             // Check if date format matches the HTML5 standard
-            if (self::HTML5_DATE_FORMAT !== $targetFormat && preg_match('~^'.Date::getRegexp(self::HTML5_DATE_FORMAT).'$~i', $value)) {
+            if (self::HTML5_DATE_FORMAT !== $targetFormat && preg_match('~^'.Date::getRegexp(self::HTML5_DATE_FORMAT).'$~i', $value ?? '')) {
                 // Transform to defined date format
                 $date = \DateTimeImmutable::createFromFormat(self::HTML5_DATE_FORMAT, $value);
                 $value = $date->format($targetFormat);

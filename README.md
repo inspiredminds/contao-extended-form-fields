@@ -16,3 +16,4 @@ Contao 4 extension to extend form fields with more options.
 * Allows you to show a character count for textareas in the front end.
 * Allows you to load a default value from a query parameter of the request.
 * Automatically uses the native HTML5 `date` input type for `date` text fields.
+* Allows you to automatically add a blank option to `<select>` fields.

@@ -19,3 +19,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['allowedValues'] = ['Erlaubte Werte', 'Nur 
 $GLOBALS['TL_LANG']['tl_form_field']['httpurl'] = ['Absolute URL', 'Überprüft ob die eingegebene URL eine absolute URL ist.'];
 $GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'] = ['Zeichen-Anzahl zeigen', 'Zeigt die eingegebene Anzahl an Zeichen über JavaScript.'];
 $GLOBALS['TL_LANG']['tl_form_field']['defaultFromRequest'] = ['Standard-Wert aus Anfrage', 'Setzt den Standard-Wert dieses Feldes anhand eines Query-Parameters des selben Namens.'];
+$GLOBALS['TL_LANG']['tl_form_field']['includeBlankOption'] = ['Leere Option einfügen', 'Fügt eine leere Option ein am den Anfang des Select-Menüs.'];

@@ -24,3 +24,4 @@ $GLOBALS['TL_LANG']['tl_form_field']['httpurl'] = ['Absolute URL', 'Checks wheth
 $GLOBALS['TL_LANG']['tl_form_field']['protected_legend'] = &$GLOBALS['TL_LANG']['tl_content']['protected_legend'];
 $GLOBALS['TL_LANG']['tl_form_field']['showCharacterCount'] = ['Show character count', 'Shows a character counter via JavaScript.'];
 $GLOBALS['TL_LANG']['tl_form_field']['defaultFromRequest'] = ['Load default from request', 'Sets the default value of this field according to a query parameter of the same name.'];
+$GLOBALS['TL_LANG']['tl_form_field']['includeBlankOption'] = ['Add blank option', 'Adds a blank option to the beginning of the select.'];

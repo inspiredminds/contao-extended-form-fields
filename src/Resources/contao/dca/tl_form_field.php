@@ -118,3 +118,16 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['defaultFromRequest'] = [
     'eval' => ['tl_class' => 'clr w50'],
     'sql' => ['type' => 'boolean', 'default' => false],
 ];
+
+// includeBlankOption for selects
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['includeBlankOption'] = [
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w50'],
+    'sql' => ['type' => 'boolean', 'default' => false],
+];
+
+PaletteManipulator::create()
+    ->addField('includeBlankOption', 'options_legend', PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('select', 'tl_form_field')
+;

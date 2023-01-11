@@ -131,3 +131,9 @@ PaletteManipulator::create()
     ->addField('includeBlankOption', 'options_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('select', 'tl_form_field')
 ;
+
+// placeholder for selects
+PaletteManipulator::create()
+    ->addField('placeholder', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('select', 'tl_form_field')
+;

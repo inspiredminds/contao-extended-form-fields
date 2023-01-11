@@ -16,6 +16,7 @@ use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\FormHookListener;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\HttpUrlListener;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormCheckBox;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormRadioButton;
+use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormSelect;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormText;
 
 /*
@@ -36,6 +37,7 @@ if (ContaoExtendedFormFieldsBundle::canIntegrateHttpUrlRgxp()) {
 $GLOBALS['TL_FFL']['radio'] = FormRadioButton::class;
 $GLOBALS['TL_FFL']['checkbox'] = FormCheckBox::class;
 $GLOBALS['TL_FFL']['text'] = FormText::class;
+$GLOBALS['TL_FFL']['select'] = FormSelect::class;
 
 /*
  * Isotope Hooks

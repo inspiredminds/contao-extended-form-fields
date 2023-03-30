@@ -16,7 +16,7 @@ use Contao\Date;
 
 class FormText extends \Contao\FormTextField
 {
-    protected const HTML5_DATE_FORMAT = 'Y-m-d';
+    public const HTML5_DATE_FORMAT = 'Y-m-d';
 
     public function __get($key)
     {

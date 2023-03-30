@@ -13,19 +13,20 @@ declare(strict_types=1);
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\GetAttributesFromDca;
 
 use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\DataContainer;
 use Contao\Date;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormText;
 
 /**
- * Transforms date values back to the HTML5 standard.
+ * Transforms date values back to the HTML5 standard for the front end.
  *
  * @Hook("getAttributesFromDca")
  */
 class AdjustDateListener
 {
-    public function __invoke(array $attributes): array
+    public function __invoke(array $attributes, $context = null): array
     {
-        if ('date' !== ($attributes['rgxp'] ?? null) || empty($attributes['value'])) {
+        if ('date' !== ($attributes['rgxp'] ?? null) || empty($attributes['value']) || $context instanceof DataContainer) {
             return $attributes;
         }
 

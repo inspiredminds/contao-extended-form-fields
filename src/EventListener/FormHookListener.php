@@ -12,35 +12,54 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener;
 
+use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\Form;
 use Contao\StringUtil;
 use Contao\Widget;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class FormHookListener
 {
+    private $requestStack;
+    private $scopeMatcher;
+
+    public function __construct(RequestStack $requestStack, ScopeMatcher $scopeMatcher)
+    {
+        $this->requestStack = $requestStack;
+        $this->scopeMatcher = $scopeMatcher;
+    }
+
     public function onParseWidget(string $buffer, Widget $widget): string
     {
+        $request = $this->requestStack->getCurrentRequest();
+
+        if (!$request || !$this->scopeMatcher->isFrontendRequest($request)) {
+            return $buffer;
+        }
+
         $data = array_filter([
             'data-min-options' => $widget->minOptions,
             'data-max-options' => $widget->maxOptions,
         ], function ($v) { return $v > 0; });
 
-        // parse the initial HTML tag
-        $buffer = preg_replace_callback(
-            '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
-            function ($matches) use ($data) {
-                $tag = $matches[1];
-                $attributes = $matches[2] ?? '';
+        if ($data) {
+            // parse the initial HTML tag
+            $buffer = preg_replace_callback(
+                '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
+                function ($matches) use ($data) {
+                    $tag = $matches[1];
+                    $attributes = $matches[2] ?? '';
 
-                // add the data attributes
-                foreach ($data as $key => $value) {
-                    $attributes .= ' '.$key.'="'.$value.'"';
-                }
+                    // add the data attributes
+                    foreach ($data as $key => $value) {
+                        $attributes .= ' '.$key.'="'.$value.'"';
+                    }
 
-                return "<{$tag}{$attributes}>";
-            },
-            $buffer, 1
-        );
+                    return "<{$tag}{$attributes}>";
+                },
+                $buffer, 1
+            );
+        }
 
         if ($widget->errorMsg && $widget->hasErrors()) {
             foreach ($widget->getErrors() as $error) {

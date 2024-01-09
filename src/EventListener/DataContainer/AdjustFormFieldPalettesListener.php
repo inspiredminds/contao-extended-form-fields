@@ -48,6 +48,7 @@ class AdjustFormFieldPalettesListener
             // Load default from request
             if (false !== strpos($palette, ',value')) {
                 PaletteManipulator::create()
+                    ->addLegend('expert_legend', 'template_legend', PaletteManipulator::POSITION_BEFORE, true)
                     ->addField('defaultFromRequest', 'expert_legend', PaletteManipulator::POSITION_APPEND)
                     ->applyToPalette($type, $table)
                 ;

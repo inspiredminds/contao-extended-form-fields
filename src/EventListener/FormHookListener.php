@@ -97,13 +97,15 @@ class FormHookListener
 
     public function validateDisallowedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
-        if (!empty($widget->disallowedValues)) {
-            $disallowlist = array_filter(StringUtil::deserialize($widget->disallowedValues, true));
+        $disallowlist = array_filter(StringUtil::deserialize($widget->disallowedValues, true));
 
-            foreach ($disallowlist as $word) {
-                if (false !== stripos($widget->value, $word)) {
-                    $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldDisallowedValues'], $word));
-                }
+        if ($disallowlist) {
+            $hasDisallowed = array_filter((array) $widget->value, static function($v) use ($disallowlist): bool {
+                return \in_array((string) $v, $disallowlist, true);
+            });
+
+            if ($hasDisallowed) {
+                $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldDisallowedValues'], reset($hasDisallowed)));
             }
         }
 
@@ -112,21 +114,21 @@ class FormHookListener
 
     public function validateAllowedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
-        if ('' === (string) $widget->value && !$widget->mandatory) {
+        if (('' === $widget->value || [] === $widget->value) && !$widget->mandatory) {
             return $widget;
         }
 
         if (!empty($widget->allowedValues)) {
             $allowlist = array_filter(StringUtil::deserialize($widget->allowedValues, true));
 
-            if (!empty($allowlist)) {
-                foreach ($allowlist as $value) {
-                    if ((string) $widget->value === (string) $value) {
-                        return $widget;
-                    }
-                }
+            if ($allowlist) {
+                $hasDisallowed = (bool) array_filter((array) $widget->value, static function($v) use ($allowlist): bool {
+                    return !\in_array($v, $allowlist, true);
+                });
 
-                $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldAllowedValues']);
+                if ($hasDisallowed) {
+                    $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldAllowedValues']);
+                }
             }
         }
 

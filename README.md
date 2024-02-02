@@ -4,7 +4,7 @@
 Contao Extended Form Fields
 ===========================
 
-Contao 4 extension to extend form fields with more options.
+Contao extension to extend form fields with more options.
 
 * Adds a _minimum options_ and _maximum options_ setting to checkbox and multiple select fields.
 * Allows you to define a custom error message in the form field's options.

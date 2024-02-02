@@ -1,9 +1,0 @@
-services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-    public: true
-
-  InspiredMinds\ContaoExtendedFormFieldsBundle\:
-    resource: ../../
-    exclude: ../../{DependencyInjection,Form,Resources}

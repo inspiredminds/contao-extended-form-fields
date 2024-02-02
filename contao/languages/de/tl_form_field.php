@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 $GLOBALS['TL_LANG']['tl_form_field']['minOptions'] = ['Minimale Anzahl', 'Die minimale Anzahl an Optionen, die ausgewählt werden müssen.'];

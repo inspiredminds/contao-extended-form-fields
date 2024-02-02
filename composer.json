@@ -27,10 +27,18 @@
     ],
     "require":{
         "php": ">=7.1",
-        "contao/core-bundle": "^4.9"
+        "contao/core-bundle": "^4.13 || ^5.2",
+        "doctrine/dbal": "^2.11 || ^3.0",
+        "symfony/http-kernel": "^5.4 || ^6.0 || ^7.0",
+        "symfony/config": "^5.4 || ^6.0 || ^7.0",
+        "symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
+        "symfony/http-foundation": "^5.4 || ^6.0 || ^7.0",
+        "symfony/translation-contracts": "^2.0 || ^3.0",
+        "symfony/polyfill-php80": "^1.28"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16 || ^3.0"
+        "contao/easy-coding-standard": "^6.0",
+        "contao/rector": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -42,7 +50,9 @@
     },
     "config": {
         "allow-plugins": {
-            "contao-components/installer": true
+            "contao-components/installer": true,
+            "php-http/discovery": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

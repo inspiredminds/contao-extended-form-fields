@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 use Contao\Controller;
@@ -62,7 +60,6 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['disallowedValues'] = [
 PaletteManipulator::create()
     ->addField('disallowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
-    ->applyToPalette('textarea', 'tl_form_field')
 ;
 
 // Add allowed values

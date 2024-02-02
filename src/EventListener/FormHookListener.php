@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener;
@@ -21,6 +19,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class FormHookListener
 {
     private $requestStack;
+
     private $scopeMatcher;
 
     public function __construct(RequestStack $requestStack, ScopeMatcher $scopeMatcher)
@@ -37,16 +36,19 @@ class FormHookListener
             return $buffer;
         }
 
-        $data = array_filter([
-            'data-min-options' => $widget->minOptions,
-            'data-max-options' => $widget->maxOptions,
-        ], function ($v) { return $v > 0; });
+        $data = array_filter(
+            [
+                'data-min-options' => $widget->minOptions,
+                'data-max-options' => $widget->maxOptions,
+            ],
+            static fn ($v) => $v > 0,
+        );
 
         if ($data) {
             // parse the initial HTML tag
             $buffer = preg_replace_callback(
                 '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
-                function ($matches) use ($data) {
+                static function ($matches) use ($data) {
                     $tag = $matches[1];
                     $attributes = $matches[2] ?? '';
 
@@ -57,7 +59,7 @@ class FormHookListener
 
                     return "<{$tag}{$attributes}>";
                 },
-                $buffer, 1
+                $buffer, 1,
             );
         }
 
@@ -100,9 +102,7 @@ class FormHookListener
         $disallowlist = array_filter(StringUtil::deserialize($widget->disallowedValues, true));
 
         if ($disallowlist) {
-            $hasDisallowed = array_filter((array) $widget->value, static function($v) use ($disallowlist): bool {
-                return \in_array((string) $v, $disallowlist, true);
-            });
+            $hasDisallowed = array_filter((array) $widget->value, static fn ($v): bool => \in_array((string) $v, $disallowlist, true));
 
             if ($hasDisallowed) {
                 $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldDisallowedValues'], reset($hasDisallowed)));
@@ -122,9 +122,7 @@ class FormHookListener
             $allowlist = array_filter(StringUtil::deserialize($widget->allowedValues, true));
 
             if ($allowlist) {
-                $hasDisallowed = (bool) array_filter((array) $widget->value, static function($v) use ($allowlist): bool {
-                    return !\in_array($v, $allowlist, true);
-                });
+                $hasDisallowed = (bool) array_filter((array) $widget->value, static fn ($v): bool => !\in_array($v, $allowlist, true));
 
                 if ($hasDisallowed) {
                     $widget->addError($GLOBALS['TL_LANG']['ERR']['formFieldAllowedValues']);

@@ -3,18 +3,28 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\Form;
 
 use Contao\Date;
+use Contao\FormText as ContaoFormText;
+use Contao\FormTextField;
 
-class FormText extends \Contao\FormTextField
+if (class_exists(ContaoFormText::class)) {
+    class FormTextBaseClass extends ContaoFormText
+    {
+    }
+} else {
+    class FormTextBaseClass extends FormTextField
+    {
+    }
+}
+
+class FormText extends FormTextBaseClass
 {
     public const HTML5_DATE_FORMAT = 'Y-m-d';
 

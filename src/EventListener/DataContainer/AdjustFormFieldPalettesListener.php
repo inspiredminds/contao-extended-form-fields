@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\DataContainer;
@@ -31,7 +29,7 @@ class AdjustFormFieldPalettesListener
             }
 
             // Add custom error msg
-            if (false !== strpos($palette, 'mandatory')) {
+            if (str_contains($palette, 'mandatory')) {
                 PaletteManipulator::create()
                     ->addField('errorMsg', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
                     ->applyToPalette($type, $table)
@@ -46,7 +44,7 @@ class AdjustFormFieldPalettesListener
             ;
 
             // Load default from request
-            if (false !== strpos($palette, ',value') || 'select' === $type) {
+            if (str_contains($palette, ',value') || 'select' === $type) {
                 PaletteManipulator::create()
                     ->addLegend('expert_legend', 'template_legend', PaletteManipulator::POSITION_BEFORE, true)
                     ->addField('defaultFromRequest', 'expert_legend', PaletteManipulator::POSITION_APPEND)

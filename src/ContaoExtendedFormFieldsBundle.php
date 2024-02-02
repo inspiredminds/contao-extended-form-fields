@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle;
@@ -20,5 +18,10 @@ class ContaoExtendedFormFieldsBundle extends Bundle
     public static function canIntegrateHttpUrlRgxp(): bool
     {
         return !class_exists(HttpUrlListener::class);
+    }
+
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
     }
 }

@@ -3,16 +3,24 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoExtendedFormFields bundle.
+ * This file is part of the Contao Extended Form Fields extension.
  *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\Form;
 
-class FormCheckBox extends \Contao\FormCheckBox
+if (class_exists(\Contao\FormCheckbox::class)) {
+    class FormCheckBoxBaseClass extends \Contao\FormCheckbox
+    {
+    }
+} else {
+    class FormCheckBoxBaseClass extends \Contao\FormCheckBox
+    {
+    }
+}
+
+class FormCheckBox extends FormCheckBoxBaseClass
 {
     public function parse($arrAttributes = null)
     {

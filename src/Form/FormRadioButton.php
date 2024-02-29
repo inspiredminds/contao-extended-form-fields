@@ -10,7 +10,18 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\Form;
 
-class FormRadioButton extends \Contao\FormRadioButton
+
+if (class_exists(\Contao\FormRadioButton::class)) {
+    class FormRadioButtonBaseClass extends \Contao\FormRadioButton
+    {
+    }
+} else {
+    class FormRadioButtonBaseClass extends \Contao\FormRadio
+    {
+    }
+}
+
+class FormRadioButton extends FormRadioButtonBaseClass
 {
     public function parse($arrAttributes = null)
     {

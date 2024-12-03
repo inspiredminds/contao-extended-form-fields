@@ -18,14 +18,8 @@ class HttpUrlListener
 {
     public const RGXP_NAME = 'httpurl';
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator)
     {
-        $this->translator = $translator;
     }
 
     public function __invoke(string $regexp, $input, Widget $widget): bool

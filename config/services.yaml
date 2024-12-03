@@ -6,4 +6,4 @@ services:
 
     InspiredMinds\ContaoExtendedFormFieldsBundle\:
         resource: ../src/
-        exclude: ../src/{DependencyInjection,Form,Resources}
+        exclude: ../src/{ContaoManager,DependencyInjection,Form,Resources}

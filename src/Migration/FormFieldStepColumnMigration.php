@@ -20,16 +20,13 @@ use Doctrine\DBAL\Types\FloatType;
  */
 class FormFieldStepColumnMigration extends AbstractMigration
 {
-    private $db;
-
-    public function __construct(Connection $db)
+    public function __construct(private readonly Connection $db)
     {
-        $this->db = $db;
     }
 
     public function shouldRun(): bool
     {
-        $schemaManager = $this->db->getSchemaManager();
+        $schemaManager = $this->db->createSchemaManager();
 
         if (!$schemaManager->tablesExist(['tl_form_field'])) {
             return false;

@@ -2,21 +2,19 @@
 
 declare(strict_types=1);
 
+use Contao\Rector\Set\SetList;
 use Rector\Config\RectorConfig;
 use Rector\Php81\Rector\Array_\FirstClassCallableRector;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->sets([__DIR__.'/vendor/contao/rector/config/contao.php']);
-
-    $rectorConfig->paths([
-        __DIR__.'/src',
+return RectorConfig::configure()
+    ->withSets([SetList::CONTAO])
+    ->withPaths([
         __DIR__.'/contao',
-    ]);
-
-    $rectorConfig->skip([
+        __DIR__.'/src',
+    ])
+    ->withSkip([
         FirstClassCallableRector::class,
-    ]);
-
-    $rectorConfig->parallel();
-    $rectorConfig->cacheDirectory(sys_get_temp_dir().'/rector_cache');
-};
+    ])
+    ->withParallel()
+    ->withCache(sys_get_temp_dir().'/rector_cache')
+;

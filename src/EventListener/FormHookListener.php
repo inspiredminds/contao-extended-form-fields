@@ -18,14 +18,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class FormHookListener
 {
-    private $requestStack;
-
-    private $scopeMatcher;
-
-    public function __construct(RequestStack $requestStack, ScopeMatcher $scopeMatcher)
-    {
-        $this->requestStack = $requestStack;
-        $this->scopeMatcher = $scopeMatcher;
+    public function __construct(
+        private readonly RequestStack $requestStack,
+        private readonly ScopeMatcher $scopeMatcher,
+    ) {
     }
 
     public function onParseWidget(string $buffer, Widget $widget): string
@@ -87,11 +83,11 @@ class FormHookListener
         }
 
         if ($widget->minOptions > 0 && \count($widget->value) < $widget->minOptions) {
-            $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldMinOptions'], $widget->minOptions));
+            $widget->addError(\sprintf($GLOBALS['TL_LANG']['ERR']['formFieldMinOptions'], $widget->minOptions));
         }
 
         if ($widget->maxOptions > 0 && \count($widget->value) > $widget->maxOptions) {
-            $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldMaxOptions'], $widget->maxOptions));
+            $widget->addError(\sprintf($GLOBALS['TL_LANG']['ERR']['formFieldMaxOptions'], $widget->maxOptions));
         }
 
         return $widget;
@@ -105,7 +101,7 @@ class FormHookListener
             $hasDisallowed = array_filter((array) $widget->value, static fn ($v): bool => \in_array((string) $v, $disallowlist, true));
 
             if ($hasDisallowed) {
-                $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['formFieldDisallowedValues'], reset($hasDisallowed)));
+                $widget->addError(\sprintf($GLOBALS['TL_LANG']['ERR']['formFieldDisallowedValues'], reset($hasDisallowed)));
             }
         }
 

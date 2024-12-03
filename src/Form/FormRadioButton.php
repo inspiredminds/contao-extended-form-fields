@@ -10,13 +10,14 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\Form;
 
+use Contao\FormRadio;
 
 if (class_exists(\Contao\FormRadioButton::class)) {
     class FormRadioButtonBaseClass extends \Contao\FormRadioButton
     {
     }
 } else {
-    class FormRadioButtonBaseClass extends \Contao\FormRadio
+    class FormRadioButtonBaseClass extends FormRadio
     {
     }
 }
@@ -34,8 +35,6 @@ class FormRadioButton extends FormRadioButtonBaseClass
 
     public function validate(): void
     {
-        parent::validate();
-
         if ($this->addCustomOption && $this->getCustomRadioValue() === $this->getPost($this->strName)) {
             $customValue = $this->getPost($this->getCustomTextName());
 
@@ -65,7 +64,7 @@ class FormRadioButton extends FormRadioButtonBaseClass
             ];
         }
 
-        $options = parent::getOptions();
+        $options = null;
 
         foreach ($options as &$option) {
             if ($option['value'] === $this->getCustomRadioValue()) {

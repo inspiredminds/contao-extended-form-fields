@@ -35,7 +35,10 @@ class FormFieldVisibilityListener
         return $return;
     }
 
-    public function onOrderConditions(Form $form, Checkout $module): void
+    /**
+     * @param Form|\Codefog\HasteBundle\Form\Form $form
+     */
+    public function onOrderConditions($form, Checkout $module): void
     {
         $fields = FormFieldModel::findPublishedByPid($module->iso_order_conditions);
 

@@ -24,11 +24,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class SetDefaultValueFromRequestListener
 {
-    private $requestStack;
-
-    public function __construct(RequestStack $requestStack)
+    public function __construct(private readonly RequestStack $requestStack)
     {
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke(Widget $widget, string $formId, array $formData, Form $form): Widget

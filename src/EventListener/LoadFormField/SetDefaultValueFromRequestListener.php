@@ -42,11 +42,11 @@ class SetDefaultValueFromRequestListener
 
         $value = $request->query->get($widget->name);
 
-        if (!\is_string($value)) {
+        if (!$value || !\is_string($value)) {
             return $widget;
         }
 
-        $widget->value = StringUtil::specialcharsAttribute($value, true, true);
+        $widget->value = StringUtil::specialcharsAttribute(StringUtil::stripInsertTags($value), true, true);
 
         return $widget;
     }

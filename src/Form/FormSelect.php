@@ -22,7 +22,7 @@ class FormSelect extends FormSelectMenu
     protected function getOptions()
     {
         if ($this->placeholder && $this->arrOptions[0]['label'] !== $this->placeholder) {
-            $this->arrOptions = array_merge([['value' => '', 'label' => $this->placeholder]], $this->arrOptions);
+            $this->arrOptions = [['value' => '', 'label' => $this->placeholder], ...$this->arrOptions];
         }
 
         return parent::getOptions();

@@ -10,21 +10,33 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\GetAttributesFromDca;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
+use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\DataContainer;
 use Contao\Date;
 use InspiredMinds\ContaoExtendedFormFieldsBundle\Form\FormText;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Transforms date values back to the HTML5 standard for the front end.
- *
- * @Hook("getAttributesFromDca")
  */
+#[AsHook('getAttributesFromDca')]
 class AdjustDateListener
 {
+    public function __construct(
+        private readonly ScopeMatcher $scopeMatcher,
+        private readonly RequestStack $requestStack,
+    ) {
+    }
+
     public function __invoke(array $attributes, $context = null): array
     {
         if ('date' !== ($attributes['rgxp'] ?? null) || empty($attributes['value']) || $context instanceof DataContainer) {
+            return $attributes;
+        }
+
+        // Make sure to only execute this in the front end (https://github.com/inspiredminds/contao-extended-form-fields/issues/8)
+        if (!($request = $this->requestStack->getCurrentRequest()) || !$this->scopeMatcher->isFrontendRequest($request)) {
             return $attributes;
         }
 

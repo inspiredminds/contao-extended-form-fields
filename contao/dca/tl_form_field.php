@@ -61,6 +61,7 @@ PaletteManipulator::create()
     ->addField('disallowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
     ->applyToPalette('textarea', 'tl_form_field')
+    ->applyToPalette('radio', 'tl_form_field')
 ;
 
 // Add allowed values
@@ -75,6 +76,7 @@ PaletteManipulator::create()
     ->addField('allowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
     ->applyToPalette('textarea', 'tl_form_field')
+    ->applyToPalette('radio', 'tl_form_field')
 ;
 
 // Add custom errorMsg

@@ -95,6 +95,10 @@ class FormHookListener
 
     public function validateDisallowedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
+        if (!\in_array($widget->type, ['text', 'radio'], true)) {
+            return $widget;
+        }
+
         $disallowlist = array_filter(StringUtil::deserialize($widget->disallowedValues, true));
 
         if ($disallowlist) {
@@ -110,6 +114,10 @@ class FormHookListener
 
     public function validateAllowedValues(Widget $widget, string $formId, array $formData, Form $form): Widget
     {
+        if (!\in_array($widget->type, ['text', 'radio'], true)) {
+            return $widget;
+        }
+
         if (('' === $widget->value || [] === $widget->value) && !$widget->mandatory) {
             return $widget;
         }

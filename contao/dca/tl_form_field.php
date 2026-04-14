@@ -60,6 +60,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['disallowedValues'] = [
 PaletteManipulator::create()
     ->addField('disallowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
+    ->applyToPalette('textdigit', 'tl_form_field')
+    ->applyToPalette('textcustom', 'tl_form_field')
     ->applyToPalette('textarea', 'tl_form_field')
     ->applyToPalette('radio', 'tl_form_field')
 ;
@@ -75,6 +77,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['allowedValues'] = [
 PaletteManipulator::create()
     ->addField('allowedValues', 'fconfig_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('text', 'tl_form_field')
+    ->applyToPalette('textdigit', 'tl_form_field')
+    ->applyToPalette('textcustom', 'tl_form_field')
     ->applyToPalette('textarea', 'tl_form_field')
     ->applyToPalette('radio', 'tl_form_field')
 ;

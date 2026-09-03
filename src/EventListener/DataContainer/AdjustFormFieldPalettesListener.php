@@ -44,7 +44,7 @@ class AdjustFormFieldPalettesListener
             ;
 
             // Load default from request
-            if (str_contains($palette, ',value') || 'select' === $type) {
+            if (str_contains($palette, ',value') || 'select' === $type || 'radio' === $type) {
                 PaletteManipulator::create()
                     ->addLegend('expert_legend', 'template_legend', PaletteManipulator::POSITION_BEFORE, true)
                     ->addField('defaultFromRequest', 'expert_legend', PaletteManipulator::POSITION_APPEND)

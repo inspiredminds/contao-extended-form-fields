@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoExtendedFormFieldsBundle\EventListener\LoadFormField;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Form;
 use Contao\StringUtil;
 use Contao\Widget;
@@ -19,9 +19,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Sets a form field's default value according to the defaultFromRequest setting and the current GET request.
- *
- * @Hook("loadFormField")
  */
+#[AsHook('loadFormField')]
 class SetDefaultValueFromRequestListener
 {
     public function __construct(private readonly RequestStack $requestStack)
